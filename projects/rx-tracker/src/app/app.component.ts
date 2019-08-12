@@ -1,4 +1,6 @@
 import {Component, ViewChild, ElementRef, OnInit} from '@angular/core';
+import {Unsubscriber} from '../../../auto-unsubscribe/src/lib/unsubscriber';
+
 
 @Component({
   selector: 'app-root',

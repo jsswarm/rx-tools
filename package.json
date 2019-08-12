@@ -3,6 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "release": "npx standard-version",
+    "commit": "npx git-cz",
     "rx-tracker": "ng serve rx-tracker & npm start -- --port 3000",
     "start": "ng serve",
     "build": "ng build",
@@ -47,5 +49,10 @@
     "tsickle": "^0.35.0",
     "tslint": "~5.15.0",
     "typescript": "~3.4.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }

@@ -17,7 +17,7 @@ export class ReactiveComponentComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.counterSubs = timer(0, 1000).subscribe(c => this.counter = c);
+    this.counterSubs = timer(0, 1000).pipe(tap(console.log)).subscribe(c => this.counter = c);
   }
 
   // ngOnDestroy() {
