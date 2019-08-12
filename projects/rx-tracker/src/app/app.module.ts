@@ -2,17 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ReactiveComponentComponent } from './reactive-component/reactive-component.component';
-import {RxTrackerModule} from './rx-tracker/rx-tracker.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ReactiveComponentComponent
+    AppComponent
   ],
   imports: [
-    BrowserModule,
-    RxTrackerModule
+    BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]
