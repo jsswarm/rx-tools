@@ -156,27 +156,62 @@
       }
     },
     "rx-tracker": {
-      "projectType": "application",
-      "schematics": {},
+      "projectType": "library",
       "root": "projects/rx-tracker",
       "sourceRoot": "projects/rx-tracker/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/rx-tracker/tsconfig.lib.json",
+            "project": "projects/rx-tracker/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/rx-tracker/src/test.ts",
+            "tsConfig": "projects/rx-tracker/tsconfig.spec.json",
+            "karmaConfig": "projects/rx-tracker/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/rx-tracker/tsconfig.lib.json",
+              "projects/rx-tracker/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "rx-tracker-extension": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/rx-tracker-extension",
+      "sourceRoot": "projects/rx-tracker-extension/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/rx-tracker",
-            "index": "projects/rx-tracker/src/index.html",
-            "main": "projects/rx-tracker/src/main.ts",
-            "polyfills": "projects/rx-tracker/src/polyfills.ts",
-            "tsConfig": "projects/rx-tracker/tsconfig.app.json",
+            "outputPath": "dist/rx-tracker-extension",
+            "index": "projects/rx-tracker-extension/src/index.html",
+            "main": "projects/rx-tracker-extension/src/main.ts",
+            "polyfills": "projects/rx-tracker-extension/src/polyfills.ts",
+            "tsConfig": "projects/rx-tracker-extension/tsconfig.app.json",
             "aot": false,
             "assets": [
-              "projects/rx-tracker/src/favicon.ico",
-              "projects/rx-tracker/src/assets"
+              "projects/rx-tracker-extension/src/favicon.ico",
+              "projects/rx-tracker-extension/src/assets"
             ],
             "styles": [
-              "projects/rx-tracker/src/styles.css"
+              "projects/rx-tracker-extension/src/styles.css"
             ],
             "scripts": []
           },
@@ -184,8 +219,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/rx-tracker/src/environments/environment.ts",
-                  "with": "projects/rx-tracker/src/environments/environment.prod.ts"
+                  "replace": "projects/rx-tracker-extension/src/environments/environment.ts",
+                  "with": "projects/rx-tracker-extension/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -210,33 +245,33 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "rx-tracker:build"
+            "browserTarget": "rx-tracker-extension:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "rx-tracker:build:production"
+              "browserTarget": "rx-tracker-extension:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "rx-tracker:build"
+            "browserTarget": "rx-tracker-extension:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/rx-tracker/src/test.ts",
-            "polyfills": "projects/rx-tracker/src/polyfills.ts",
-            "tsConfig": "projects/rx-tracker/tsconfig.spec.json",
-            "karmaConfig": "projects/rx-tracker/karma.conf.js",
+            "main": "projects/rx-tracker-extension/src/test.ts",
+            "polyfills": "projects/rx-tracker-extension/src/polyfills.ts",
+            "tsConfig": "projects/rx-tracker-extension/tsconfig.spec.json",
+            "karmaConfig": "projects/rx-tracker-extension/karma.conf.js",
             "assets": [
-              "projects/rx-tracker/src/favicon.ico",
-              "projects/rx-tracker/src/assets"
+              "projects/rx-tracker-extension/src/favicon.ico",
+              "projects/rx-tracker-extension/src/assets"
             ],
             "styles": [
-              "projects/rx-tracker/src/styles.css"
+              "projects/rx-tracker-extension/src/styles.css"
             ],
             "scripts": []
           }
@@ -245,9 +280,9 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/rx-tracker/tsconfig.app.json",
-              "projects/rx-tracker/tsconfig.spec.json",
-              "projects/rx-tracker/e2e/tsconfig.json"
+              "projects/rx-tracker-extension/tsconfig.app.json",
+              "projects/rx-tracker-extension/tsconfig.spec.json",
+              "projects/rx-tracker-extension/e2e/tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -257,12 +292,12 @@
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "projects/rx-tracker/e2e/protractor.conf.js",
-            "devServerTarget": "rx-tracker:serve"
+            "protractorConfig": "projects/rx-tracker-extension/e2e/protractor.conf.js",
+            "devServerTarget": "rx-tracker-extension:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "rx-tracker:serve:production"
+              "devServerTarget": "rx-tracker-extension:serve:production"
             }
           }
         }

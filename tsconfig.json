@@ -20,17 +20,17 @@
       "dom"
     ],
     "paths": {
-      "rx-tracker": [
-        "dist/rx-tracker"
-      ],
-      "rx-tracker/*": [
-        "dist/rx-tracker/*"
-      ],
       "auto-unsubscribe": [
         "dist/auto-unsubscribe"
       ],
       "auto-unsubscribe/*": [
         "dist/auto-unsubscribe/*"
+      ],
+      "rx-tracker": [
+        "dist/rx-tracker"
+      ],
+      "rx-tracker/*": [
+        "dist/rx-tracker/*"
       ]
     }
   }
