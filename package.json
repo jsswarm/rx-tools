@@ -9,7 +9,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "jest",
-    "test:unsubscriber": "jest --config jest.unusbuscriber.config.js",
+    "test:unsubscriber": "jest --config jest.unusbuscriber.config.js --watch",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "test:watch": "jest --watch"
@@ -45,6 +45,7 @@
     "jest-preset-angular": "7.1.1",
     "ng-packagr": "^5.1.0",
     "protractor": "~5.4.0",
+    "ts-mock": "^0.4.3",
     "ts-node": "~7.0.0",
     "tsickle": "^0.35.0",
     "tslint": "~5.15.0",
