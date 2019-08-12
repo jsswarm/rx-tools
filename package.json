@@ -9,7 +9,9 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "jest",
+    "test:ci": "jest --ci",
     "test:unsubscriber": "jest --config jest.unusbuscriber.config.js",
+    "test:unsubscriber:ci": "npm run test:unsubscriber -- --ci",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "test:watch": "jest --watch"
