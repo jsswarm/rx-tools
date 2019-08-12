@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ReactiveComponentComponent } from './reactive-component/reactive-component.component';
-import {RxTrackerModule} from './rx-tracker/rx-tracker.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +11,6 @@ import {RxTrackerModule} from './rx-tracker/rx-tracker.module';
   ],
   imports: [
     BrowserModule,
-    RxTrackerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
