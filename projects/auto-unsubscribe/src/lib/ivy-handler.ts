@@ -2,7 +2,6 @@ import {Subscription} from 'rxjs';
 import {isSubscription} from './helpers';
 
 export class IvyHandler<C> {
-  private cmpInstance: any;
 
   get cmpDef() {
     return this.target.ngComponentDef;
@@ -11,31 +10,22 @@ export class IvyHandler<C> {
   constructor(
       public target: any
   ) {
-    this.wrapFactory();
     this.wrapOnDestroy();
   }
 
-  public getSubscriptions(): Subscription[] {
-    return Object.getOwnPropertyNames(this.cmpInstance)
-        .map(prop => this.cmpInstance[prop])
+  public getSubscriptions(instance): Subscription[] {
+    return Object.getOwnPropertyNames(instance)
+        .map(prop => instance[prop])
         .filter(isSubscription);
   }
 
-  private wrapFactory() {
-    const originalFactory = this.cmpDef.factory;
-    this.cmpDef.factory = (...args) => {
-      this.cmpInstance = originalFactory(...args);
-
-      return this.cmpInstance;
-    };
-  }
-
   private wrapOnDestroy() {
-    this.cmpDef.onDestroy = () => {
-      if (this.cmpInstance.ngOnDestroy) {
-        this.cmpInstance.ngOnDestroy();
-      }
-      this.getSubscriptions().forEach(subs => subs.unsubscribe());
+    const unsubscribe = (instance) => this.getSubscriptions(instance)
+        .forEach(subs => subs.unsubscribe());
+
+    this.cmpDef.onDestroy = function() {
+      // now the this variable holds the component instance.
+      unsubscribe(this);
     };
   }
 
